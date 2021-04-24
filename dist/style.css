@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('https://fonts.googleapis.com/css2?family=Antonio:wght@200&display=swap'),
+  font-weight: 600;
+  font-style: normal;
+}
+.hello {
+  color: red;
+  font-family: 'Antonio', sans-serif
+  background: url('./icon.png');
+}
