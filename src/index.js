@@ -1,10 +1,19 @@
-import { format, formatDistance, formatRelative, subDays } from 'date-fns'
+import { el } from 'date-fns/locale';
+import Colcade from 'colcade';
+import {
+  format, formatDistance, formatRelative, subDays,
+} from 'date-fns';
 
-format(new Date(), "'Today is a' eeee")
-//=> "Today is a Saturday"
+// DOM manipulation object 
 
-formatDistance(subDays(new Date(), 3), new Date(), { addSuffix: true })
-//=> "3 days ago"
+export const domManipulator = (function () {
+  // displays all todos in an arr to the DOM
+  function renderTodos(todos, element) {
 
-formatRelative(subDays(new Date(), 3), new Date())
-//=> "last Friday at 7:26 p.m."
+    // pick the relevent todo items
+
+    const toDoList = todos[toDosManager.getCurrentProject()];
+    // console.log(toDoList) 
+  }
+
+})
