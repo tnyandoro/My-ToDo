@@ -20,7 +20,11 @@ class Project {
     return this.name;
   }
 
-  getMytodos() {
+  getMyTodos() {
     return this.mytodos;
+  }
+
+  addMyTodo(title, description,dueDate, priority) {
+this.todos.push(new MyTodo(title, description, dueDate, priority));
   }
 }
