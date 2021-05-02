@@ -24,7 +24,16 @@ class Site {
     
     const json = JSON.parse(data);
     site.activeProjectIndex = json.activeProjectIndex;
-    site.projects = json.projects.map((p) => Project.fromJSON(p))
+    site.projects = json.projects.map((p) => Project.fromJSON(p));
+    return site;
+  }
 
+  saveTolocalStorage() {
+    const data = JSON.stringify(this);
+    localStorage.setItem('data', data);
+  }
+
+  getActiveProjectIndex(){
+    return this.activeProjectIndex;
   }
 }
