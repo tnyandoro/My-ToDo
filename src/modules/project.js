@@ -36,3 +36,5 @@ class Project {
     this.todos[index] = todo;
   }
 }
+
+export default Project;
