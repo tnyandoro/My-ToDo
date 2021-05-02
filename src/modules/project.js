@@ -1,5 +1,6 @@
 import MyTodo from './mytodo';
-var json = require('json');
+
+const json = require('json');
 
 class Project {
   constructor(name) {
@@ -9,5 +10,13 @@ class Project {
 
   static fromJSON(json) {
     const project = new Project(json.name);
+    project.todos = json.todos.map(
+      (todo) => new MyTodo(todo.title, todo.description, todo.dueDate, todo.priority),
+    );
+    return project;
+  }
+
+  getName() {
+    return this.name;
   }
 }
