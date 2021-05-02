@@ -14,4 +14,15 @@ class Site {
     this.projects = [p1];
     this.activeProjectIndex = 0;
   }
+
+  static loadFromLocalStorage(){
+    const data = localStorage.getItem('data')
+    const site = new Site();
+    if (!data){ 
+      return site;
+    }
+    
+    const json = JSON.parse(data);
+    app.activeProjectIndex = json.activeProjectIndex;
+  }
 }
