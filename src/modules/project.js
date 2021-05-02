@@ -24,7 +24,15 @@ class Project {
     return this.mytodos;
   }
 
-  addMyTodo(title, description,dueDate, priority) {
-this.todos.push(new MyTodo(title, description, dueDate, priority));
+  addMyTodo(title, description, dueDate, priority) {
+    this.todos.push(new MyTodo(title, description, dueDate, priority));
+  }
+
+  removeMyTodoAt(index) {
+    this.todos.splice(index, 1);
+  }
+
+  updateTodo(todo, index) {
+    this.todos[index] = todo;
   }
 }
