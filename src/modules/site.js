@@ -23,6 +23,8 @@ class Site {
     }
     
     const json = JSON.parse(data);
-    app.activeProjectIndex = json.activeProjectIndex;
+    site.activeProjectIndex = json.activeProjectIndex;
+    site.projects = json.projects.map((p) => Project.fromJSON(p))
+
   }
 }
