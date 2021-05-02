@@ -19,4 +19,8 @@ class Project {
   getName() {
     return this.name;
   }
+
+  getMytodos() {
+    return this.mytodos;
+  }
 }
