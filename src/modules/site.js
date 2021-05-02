@@ -36,4 +36,12 @@ class Site {
   getActiveProjectIndex(){
     return this.activeProjectIndex;
   }
+
+  setActiveProjectIndex(index) {
+    this.activeProjectIndex = index;
+    this.saveTolocalStorage();
+  }
+  getActiveProject() {
+    return this.projects[this.activeProjectIndex];
+  }
 }
