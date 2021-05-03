@@ -25,5 +25,18 @@ const renderMyTodos = (activeProject) => {
     const {
       title, description, dueDate, priority,
     } = todo.getInfo();
-  })
-}
+
+    todoContainer.append(
+
+      `<li class="todo" data-id=${index}>
+      <div class="todoTopContent">
+      <p>${title}</p>
+      <p><span>${dueDate}</span><span data-id=${index} class="delete">Delete</span></p>
+      </div>
+      <p class="todo-description">${description}</p>
+      </li>`,
+    );
+  });
+
+  $('#projectMyTodos').text(activeProject.getName());
+};
