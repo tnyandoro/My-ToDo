@@ -28,7 +28,7 @@ class Site {
     return site;
   }
 
-  saveTolocalStorage() {
+  saveToLocalStorage() {
     const data = JSON.stringify(this);
     localStorage.setItem('data', data);
   }
@@ -39,7 +39,7 @@ class Site {
 
   setActiveProjectIndex(index) {
     this.activeProjectIndex = index;
-    this.saveTolocalStorage();
+    this.saveToLocalStorage();
   }
   getActiveProject() {
     return this.projects[this.activeProjectIndex];
@@ -52,7 +52,7 @@ class Site {
   addNewProject(name) {
     const project = new Project(name);
     this.projects.push(project);
-    this.saveTolocalStorage();
+    this.saveToLocalStorage();
   }
 
   removeProjectAt(index) {
@@ -61,6 +61,12 @@ class Site {
     }
     this.projects.splice(index, 1);
     this.activeProjectIndex = 0;
-    this.saveTolocalStorage();
+    this.saveToLocalStorage();
+  }
+  
+  addMyTodo(title, description, dueDate, priority) {
+    const activeProject = this.getActiveProject();
+    activeProject.addMyTodo(title, description, dueDate, priority);
+    this.saveToLocalStorage();
   }
 }
