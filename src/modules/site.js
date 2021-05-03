@@ -54,4 +54,13 @@ class Site {
     this.projects.push(project);
     this.saveTolocalStorage();
   }
+
+  removeProjectAt(index) {
+    if (this.projects.length === 1) {
+      return;
+    }
+    this.projects.splice(index, 1);
+    this.activeProjectIndex = 0;
+    this.saveTolocalStorage();
+  }
 }
