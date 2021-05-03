@@ -16,3 +16,14 @@ const renderProjects = (projects, activeProjectIndex) => {
   $('.project').removeClass('active');
   $(`.project[data-id=${activeProjectIndex}]`).addClass('active');
 };
+
+const renderMyTodos = (activeProject) => {
+  const todoContainer = $('#todos');
+
+  todoContainer.empty();
+  activeProject.getMyTodos().forEach((todo, index) => {
+    const {
+      title, description, dueDate, priority,
+    } = todo.getInfo();
+  })
+}
