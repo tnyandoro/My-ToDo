@@ -69,4 +69,10 @@ class Site {
     activeProject.addMyTodo(title, description, dueDate, priority);
     this.saveToLocalStorage();
   }
+
+  removeMyTodoAt(index) { 
+    const activeProject = this.getActiveProject();
+    activeProject.removeMyTodoAt(index);
+    this.saveToLocalStorage();
+  }
 }
