@@ -75,4 +75,11 @@ class Site {
     activeProject.removeMyTodoAt(index);
     this.saveToLocalStorage();
   }
+
+  updateMyTodo(todo, index) {
+    const  activeProject = this.getActiveProject();
+    activeProject.updateMyTodo(todo, index);
+    this.saveToLocalStorage();
+  }
 }
+export default Site;
