@@ -44,4 +44,14 @@ class Site {
   getActiveProject() {
     return this.projects[this.activeProjectIndex];
   }
+
+  getAllProjects() {
+    return this.projects;
+  }
+
+  addNewProject(name) {
+    const project = new Project(name);
+    this.projects.push(project);
+    this.saveTolocalStorage();
+  }
 }
