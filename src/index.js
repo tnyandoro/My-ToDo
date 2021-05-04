@@ -86,6 +86,13 @@ const main = () => {
     renderMyTodos(site.getActiveProject());
     $('#editActiveMyTodoFormContainer').hide();
     $('.todo').on('click', handleSelectMyTodo);
-    
-  }
+    $('.project').on('click', handleChangeActiveProject);
+  };
+
+  const handleAddProjectShowForm = () => {
+    const form = $('#newProjectForm');
+    form.removeClass('hidden');
+  };
+
+  
 };
