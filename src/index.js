@@ -55,4 +55,37 @@ const main = () => {
   const site = Site.loadFromLocalStorage();
   renderProjects(site.getAllProjects(), site.getAllProjectsIndex());
   renderMyTodos(site.getActiveProject());
+
+  const handleAddMyTodoShowForm = () => {
+    $('#editActiveMyTodoFormContainer').hide();
+    const formContainer = $('newMyTodoForm');
+    formContainer.removeClass('hidden');
+  };
+  const handleSelectMyTodo = (event) => {
+    $('newMyTodoForm').addClass('hidden');
+    const index = $(event.currentTarget).data('id');
+    const todos = site.getActiveProject().getMyTodos();
+    const selectedMyTodo = todos[index];
+    renderSelectedMyTodo(selectedMyTodo, index);
+  };
+
+  const handleMyTodoDelete = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const index = $(event.target).data('id');
+    site.removeMyTodoAt(index);
+    renderMyTodos(site.getActiveProject());
+    $('.todo').on('click', handleSelectMyTodo);
+    $('.delete').on('click', handleMyTodoDelete);
+  };
+
+  const handleChangeActiveProject = (event) => {
+    const index = $(event.currentTarget).data('id');
+    site.setActiveProjectIndex(index);
+    renderProjects(site.getAllprojects(), site.getActiveProjectIndex());
+    renderMyTodos(site.getActiveProject());
+    $('#editActiveMyTodoFormContainer').hide();
+    $('.todo').on('click', handleSelectMyTodo);
+    
+  }
 };
