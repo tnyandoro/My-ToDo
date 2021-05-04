@@ -40,3 +40,19 @@ const renderMyTodos = (activeProject) => {
 
   $('#projectMyTodos').text(activeProject.getName());
 };
+
+const renderSelectedMyTodo = (todo, index) => {
+  const info = todo.getInfo();
+  $('#editActiveMyTodoFormContainer').show();
+  $('#editActiveMyTodoFormContainer input[name=title]').val(info.title);
+  $('#editActiveMyTodoFormContainer #todoDescription').text(info.decription);
+  $('#editActiveMyTodoFormContainer select#priority').val(info.priority);
+  $('#editActiveMyTodoFormContainer input[name=dueDate]').val(info.dueDate);
+  $('#editActiveMyTodoFormContainer input[type=hidden]').val(index);
+};
+
+const main = () => {
+  const site = Site.loadFromLocalStorage();
+  renderProjects(site.getAllProjects(), site.getAllProjectsIndex());
+  renderMyTodos(site.getActiveProject());
+};
