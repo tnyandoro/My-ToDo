@@ -107,4 +107,17 @@ const main = () => {
 
     $('.project').on('click', handleChangeActiveProject);
   };
+
+  const handleAddNewMyTodo = () => {
+    event.preventDefault();
+    const form = $(event.target);
+    const todo = form.serializeArray();
+    site.addMyTodo(todo[0].value, todo[1].value, todo[3].value, todo[2].value);
+    renderMyTodos(site.getActiveProject());
+    $('.todo').on('click', handleSelectMyTodo);
+    $('.delete').on('click', handleMyTodoDelete);
+    form[0].reset();
+    $('#newMyTodoForm').addClass('hidden');
+  };
+  
 };
