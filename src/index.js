@@ -94,5 +94,17 @@ const main = () => {
     form.removeClass('hidden');
   };
 
-  
+  const handleAddProject = (event) => {
+    event.preventDefault();
+    const form = $(event.target);
+    const projectName = form.serializeArray()[0].value;
+    site.addNewProject(projectName);
+    renderProjects(site.getAllProjects(), site.getActiveProjectIndex());
+
+    form[0].reset();
+
+    form.addClass('hidden');
+
+    $('.project').on('click', handleChangeActiveProject);
+  };
 };
