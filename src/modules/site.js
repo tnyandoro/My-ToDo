@@ -4,24 +4,24 @@ class Site {
   constructor() {
     const description = 'Describe your Todo';
     const priority = 'high';
-    const dueDate = '2021, 4, 02',
+    const dueDate = '2021-04-02';
 
-    const p1 = new Project('Project 1'); 
+    const p1 = new Project('Project 1');
     p1.addMyTodo('MyTodo 1', description, dueDate, priority);
-    p1.addMyTodo('MyTodo 2', description, '2021, 4, 02', 'low');
+    p1.addMyTodo('MyTodo 2', description, '2021-04-12', 'low');
     p1.addMyTodo('MyTodo 3', description, dueDate, 'medium');
 
     this.projects = [p1];
     this.activeProjectIndex = 0;
   }
 
-  static loadFromLocalStorage(){
-    const data = localStorage.getItem('data')
+  static loadFromLocalStorage() {
+    const data = localStorage.getItem('data');
     const site = new Site();
-    if (!data){ 
+    if (!data) {
       return site;
     }
-    
+
     const json = JSON.parse(data);
     site.activeProjectIndex = json.activeProjectIndex;
     site.projects = json.projects.map((p) => Project.fromJSON(p));
@@ -33,7 +33,7 @@ class Site {
     localStorage.setItem('data', data);
   }
 
-  getActiveProjectIndex(){
+  getActiveProjectIndex() {
     return this.activeProjectIndex;
   }
 
@@ -41,6 +41,7 @@ class Site {
     this.activeProjectIndex = index;
     this.saveToLocalStorage();
   }
+
   getActiveProject() {
     return this.projects[this.activeProjectIndex];
   }
@@ -63,21 +64,21 @@ class Site {
     this.activeProjectIndex = 0;
     this.saveToLocalStorage();
   }
-  
+
   addMyTodo(title, description, dueDate, priority) {
     const activeProject = this.getActiveProject();
     activeProject.addMyTodo(title, description, dueDate, priority);
     this.saveToLocalStorage();
   }
 
-  removeMyTodoAt(index) { 
+  removeMyTodoAt(index) {
     const activeProject = this.getActiveProject();
     activeProject.removeMyTodoAt(index);
     this.saveToLocalStorage();
   }
 
   updateMyTodo(todo, index) {
-    const  activeProject = this.getActiveProject();
+    const activeProject = this.getActiveProject();
     activeProject.updateMyTodo(todo, index);
     this.saveToLocalStorage();
   }

@@ -1,9 +1,7 @@
-import _ from 'lodash';
-import $ from 'jquery';
+import { $ } from "jquery";
 import './assets/style.css';
-import Icon from './assets/icon.png';
-import Site from './modules/site';
-import MyTodo from './modules/mytodo';
+import { MyTodo} from './modules/mytodo'
+import { Site } from './modules/site'
 
 const renderProjects = (projects, activeProjectIndex) => {
   const projectsContainer = $('#projects');
@@ -27,7 +25,6 @@ const renderMyTodos = (activeProject) => {
     } = todo.getInfo();
 
     todoContainer.append(
-
       `<li class="todo" data-id=${index}>
       <div class="todoTopContent">
       <p>${title}</p>
@@ -94,7 +91,7 @@ const main = () => {
     form.removeClass('hidden');
   };
 
-  const handleAddProject = (event) => {
+  const handleAddNewProject = (event) => {
     event.preventDefault();
     const form = $(event.target);
     const projectName = form.serializeArray()[0].value;
@@ -119,5 +116,38 @@ const main = () => {
     form[0].reset();
     $('#newMyTodoForm').addClass('hidden');
   };
-  
+
+  const handleEditMyTodo = (event) => {
+    event.preventDefault();
+    const form = $(event.target);
+    const todoUpdates = form.serializeArray();
+    const index = Number(todoUpdates[4].value);
+    const activeProject = site.getActiveProject();
+    const updatedMyTodo = new MyTodo(
+      todoUpdates[0].value,
+      todoUpdates[1].value,
+      todoUpdates[3].value,
+      todoUpdates[2].value,
+    );
+
+    site.updateMyTodo(updatedMyTodo, index, activeProject);
+    form[0].reset();
+    $('.editActiveMyTodoFormContainer').hide();
+    renderMyTodos(activeProject);
+    $('.todo').on('.click', handleSelectMyTodo);
+    $('.delete').on('.click', handleMyTodoDelete);
+  };
+
+  $('.project').on('click', handleChangeActiveProject);
+  $('.todo').on('click', handleSelectMyTodo);
+  $('.newProjectBtn').on('click', handleAddProjectShowForm);
+  $('#newProjectForm').on('submit', handleAddNewProject);
+  $('newMyTodoBtn').on('click', handleAddMyTodoShowForm);
+  $('todoForm').on('submit', handleAddNewMyTodo);
+  $('#editActiveMyTodoForm').on('submit', handleEditMyTodo);
+  $('.delete').on('click', handleMyTodoDelete);
+  $('#editActiveMyTodoFormContainer').hide();
+  window.$ = $;
 };
+
+$(main);

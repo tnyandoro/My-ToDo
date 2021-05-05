@@ -21,6 +21,12 @@ module.exports = {
         type: 'asset/resource',
       },
       {
+        // make all files ending in .json5 use the `json5-loader`
+        test: /\.json5$/,
+        use: 'json5-loader',
+        type: 'javascript/auto'
+      },
+      {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {

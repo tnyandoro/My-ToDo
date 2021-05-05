@@ -1,6 +1,4 @@
-import MyTodo from './mytodo';
-
-const json = require('json');
+import MyTodo from './mytodo'
 
 class Project {
   constructor(name) {
