@@ -4,7 +4,7 @@ This is a My Todo App created in vanilla JavaScript. My Todo's are going to be o
 
 |Main Project page
 
-|![My Todo App](https://user-images.githubusercontent.com/30318155/115035450-e193aa00-9ecc-11eb-98e5-62bd6b8373f8.png)|
+|![My Todo App]()|
 
 ## Built With
 
